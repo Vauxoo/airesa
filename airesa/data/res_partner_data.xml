@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+
+    <record id="res_partner_invoice_address_airesa" model="res.partner">
+        <field name="type">invoice</field>
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="street">CALLE COLON 739</field>
+        <field name="city">Guadalajara</field>
+        <field name="zip">44100</field>
+        <field name="phone">+523331203316</field>
+        <field name="email">sistemas@airesa.com</field>
+        <field name="state_id" ref="base.state_mx_jal" />
+        <field name="country_id" ref="base.mx" />
+    </record>
+
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+
+    <record id="base.main_company" model="res.company">
+        <field name="name">AIRE Y EQUIPOS PARA REFRIGERACIÓN</field>
+        <field name="street">CALLE COLÓN 739</field>
+        <field name="zip">44100</field>
+        <field name="city">Guadalajara</field>
+        <field name="phone">+523331203316</field>
+        <field name="vat">AER0506156J7</field>
+        <field name="email">sistemas@airesa.com</field>
+        <field name="website">https://www.airesa.com/</field>
+        <field name="state_id" ref="base.state_mx_jal" />
+        <field name="country_id" ref="base.mx" />
+        <field name="logo" type="base64" file="airesa/static/img/logo.png" />
+        <field name="l10n_mx_edi_fiscal_regime">601</field>
+    </record>
+
+</odoo>

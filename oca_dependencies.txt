@@ -1,0 +1,2 @@
+enterprise git@github.com:Vauxoo/enterprise.git
+design-themes git@github.com:odoo/design-themes.git
