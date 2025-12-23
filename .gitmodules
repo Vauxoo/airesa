@@ -1,0 +1,4 @@
+[submodule "airesa"]
+	path = airesa
+	url = git@git.vauxoo.com:vauxoo/airesa.git
+	branch = 19.0
