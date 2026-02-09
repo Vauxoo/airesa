@@ -7,10 +7,11 @@
     "website": "https://www.vauxoo.com",
     "license": "OPL-1",
     "category": "Installer",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "depends": [
         "accountant",
         "crm",
+        "credit_management",
         "hr",
         "l10n_mx_edi",
         "sale_management",
