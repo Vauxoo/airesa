@@ -2,3 +2,6 @@ enterprise git@github.com:Vauxoo/enterprise.git
 credit-management git@git.vauxoo.com:vauxoo/credit-management.git
 design-themes git@github.com:odoo/design-themes.git
 stock-logistics-workflow git@github.com:Vauxoo/stock-logistics-workflow.git
+account-payment-split git@git.vauxoo.com:vauxoo/account-payment-split.git
+l10n-mx-edi-payment-split git@git.vauxoo.com:mexico/l10n-mx-edi-payment-split.git
+addons-vauxoo git@github.com:Vauxoo/addons-vauxoo.git
