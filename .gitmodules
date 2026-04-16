@@ -6,6 +6,18 @@
 	path = credit-management
 	url = git@git.vauxoo.com:vauxoo/credit-management.git
 	branch = 19.0
+[submodule "l10n-mx-edi-payment-split"]
+	path = l10n-mx-edi-payment-split
+	url = git@git.vauxoo.com:mexico/l10n-mx-edi-payment-split.git
+	branch = 19.0
+[submodule "account-payment-split"]
+	path = account-payment-split
+	url = git@git.vauxoo.com:vauxoo/account-payment-split.git
+	branch = 19.0
+[submodule "addons-vauxoo"]
+	path = addons-vauxoo
+	url = https://github.com/Vauxoo/addons-vauxoo.git
+	branch = 19.0
 [submodule "stock-logistics-workflow"]
 	path = stock-logistics-workflow
 	url = git@github.com:Vauxoo/stock-logistics-workflow.git
