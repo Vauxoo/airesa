@@ -1,3 +1,4 @@
 enterprise git@github.com:Vauxoo/enterprise.git
 credit-management git@git.vauxoo.com:vauxoo/credit-management.git
 design-themes git@github.com:odoo/design-themes.git
+stock-logistics-workflow git@github.com:Vauxoo/stock-logistics-workflow.git
