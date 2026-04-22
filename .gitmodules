@@ -6,3 +6,7 @@
 	path = credit-management
 	url = git@git.vauxoo.com:vauxoo/credit-management.git
 	branch = 19.0
+[submodule "stock-logistics-workflow"]
+	path = stock-logistics-workflow
+	url = git@github.com:Vauxoo/stock-logistics-workflow.git
+	branch = 19.0
