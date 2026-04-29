@@ -15,6 +15,7 @@
         "crm",
         "hr",
         "l10n_mx_avoid_reversal_entry",
+        "l10n_mx_edi_document",
         "l10n_mx_edi_payment_split",
         "point_of_sale",
         "purchase",
