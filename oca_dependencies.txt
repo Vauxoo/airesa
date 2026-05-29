@@ -6,3 +6,4 @@ account-payment-split git@git.vauxoo.com:vauxoo/account-payment-split.git
 l10n-mx-edi-payment-split git@git.vauxoo.com:mexico/l10n-mx-edi-payment-split.git
 addons-vauxoo git@github.com:Vauxoo/addons-vauxoo.git
 partner-contact git@github.com:Vauxoo/partner-contact.git
+l10n-mx-avoid-reversal-entry git@git.vauxoo.com:mexico/l10n-mx-avoid-reversal-entry.git
