@@ -11,6 +11,7 @@
     "depends": [
         "accountant",
         "base_partner_sequence",
+        "base_user_role",
         "credit_management",
         "crm",
         "generic_security_restriction",
