@@ -13,6 +13,7 @@
         "base_partner_sequence",
         "credit_management",
         "crm",
+        "generic_security_restriction",
         "hr",
         "l10n_mx_avoid_reversal_entry",
         "l10n_mx_edi_document",
