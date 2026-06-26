@@ -9,5 +9,6 @@ partner-contact git@github.com:Vauxoo/partner-contact.git
 l10n-mx-avoid-reversal-entry git@git.vauxoo.com:mexico/l10n-mx-avoid-reversal-entry.git
 edi-document git@git.vauxoo.com:vauxoo/edi-document.git
 mexico-document git@git.vauxoo.com:vauxoo/mexico-document.git
+product-attribute git@github.com:Vauxoo/product-attribute.git
 purchase-workflow git@github.com:Vauxoo/purchase-workflow.git
 server-backend git@github.com:Vauxoo/server-backend.git

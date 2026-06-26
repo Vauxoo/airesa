@@ -20,6 +20,7 @@
         "l10n_mx_edi_document",
         "l10n_mx_edi_payment_split",
         "point_of_sale",
+        "product_pricelist_supplierinfo",
         "purchase_order_supplierinfo_update",
         "sale_management",
         "stock_manual_transfer",
