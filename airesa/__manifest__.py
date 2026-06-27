@@ -7,7 +7,7 @@
     "website": "https://www.vauxoo.com",
     "license": "OPL-1",
     "category": "Installer",
-    "version": "19.0.1.0.7",
+    "version": "19.0.1.0.8",
     "depends": [
         "accountant",
         "base_partner_sequence",
@@ -21,6 +21,7 @@
         "l10n_mx_edi_payment_split",
         "point_of_sale",
         "product_pricelist_supplierinfo",
+        "purchase_last_price_info",
         "purchase_order_supplierinfo_update",
         "sale_management",
         "stock_manual_transfer",
