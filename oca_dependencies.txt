@@ -9,4 +9,4 @@ partner-contact git@github.com:Vauxoo/partner-contact.git
 l10n-mx-avoid-reversal-entry git@git.vauxoo.com:mexico/l10n-mx-avoid-reversal-entry.git
 edi-document git@git.vauxoo.com:vauxoo/edi-document.git
 mexico-document git@git.vauxoo.com:vauxoo/mexico-document.git
-server-backend git@github.com:OCA/server-backend.git
+server-backend git@github.com:Vauxoo/server-backend.git
