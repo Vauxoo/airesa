@@ -38,3 +38,7 @@
 	path = l10n-mx-avoid-reversal-entry
 	url = git@git.vauxoo.com:mexico/l10n-mx-avoid-reversal-entry.git
 	branch = 19.0
+[submodule "server-backend"]
+	path = server-backend
+	url = git@github.com:OCA/server-backend.git
+	branch = 19.0
