@@ -42,3 +42,11 @@
 	path = server-backend
 	url = git@github.com:Vauxoo/server-backend.git
 	branch = 19.0
+[submodule "purchase-workflow"]
+	path = purchase-workflow
+	url = git@github.com:Vauxoo/purchase-workflow.git
+	branch = 19.0
+[submodule "product-attribute"]
+	path = product-attribute
+	url = git@github.com:Vauxoo/product-attribute.git
+	branch = 19.0
