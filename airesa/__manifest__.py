@@ -7,7 +7,7 @@
     "website": "https://www.vauxoo.com",
     "license": "OPL-1",
     "category": "Installer",
-    "version": "19.0.1.0.8",
+    "version": "19.0.1.0.9",
     "depends": [
         "accountant",
         "base_partner_sequence",
@@ -30,6 +30,12 @@
     "data": [
         "data/res_company_data.xml",
         "data/res_partner_data.xml",
+    ],
+    "demo": [
+        "demo/crm_team_demo.xml",
+        "demo/res_users_demo.xml",
+        "demo/crm_team_member_demo.xml",
+        "demo/generic_security_restriction_demo.xml",
     ],
     "application": True,
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="restriction_invoice_team" model="generic.security.model.restriction">
+        <field name="name">Invoice team restriction</field>
+        <field name="model_id" search="[('model','=','account.move')]" model="ir.model"/>
+        <field name="domain_type">code</field>
+        <field name="domain_code">['|', ('team_id', 'in', user.crm_team_ids.ids), ('team_id', '=', False)]</field>
+        <field name="apply_mode_read" eval="True"/>
+        <field name="apply_mode_write" eval="True"/>
+        <field name="apply_mode_create" eval="True"/>
+        <field name="apply_mode_unlink" eval="True"/>
+        <field name="user_ids" eval="[Command.set([ref('airesa.user_restricted')])]"/>
+    </record>
+
+</odoo>

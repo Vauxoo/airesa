@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="team_a_membership" model="crm.team.member">
+        <field name="user_id" ref="airesa.user_restricted" />
+        <field name="crm_team_id" ref="airesa.team_a" />
+    </record>
+    <record id="team_b_membership" model="crm.team.member">
+        <field name="user_id" ref="base.user_admin" />
+        <field name="crm_team_id" ref="airesa.team_b" />
+    </record>
+
+</odoo>

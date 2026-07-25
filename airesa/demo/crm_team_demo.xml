@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="team_a" model="crm.team">
+        <field name="name">Team A</field>
+    </record>
+    <record id="team_b" model="crm.team">
+        <field name="name">Team B</field>
+    </record>
+
+</odoo>
