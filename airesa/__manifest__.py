@@ -3,11 +3,11 @@
     "summary": """
     Instance creator for airesa. This is the app.
     """,
-    "author": "Vauxoo",
+    "author": "Diego Galvez, Vauxoo",
     "website": "https://www.vauxoo.com",
     "license": "OPL-1",
     "category": "Installer",
-    "version": "19.0.1.0.10",
+    "version": "19.0.1.0.12",
     "depends": [
         "accountant",
         "base_partner_sequence",
@@ -30,6 +30,10 @@
     "data": [
         "data/res_company_data.xml",
         "data/res_partner_data.xml",
+        "views/res_company_views.xml",
+        "report/account_report.xml",
+        "report/report_templates.xml",
+        "report/report_invoice.xml",
     ],
     "demo": [
         "demo/crm_team_demo.xml",
@@ -37,5 +41,12 @@
         "demo/crm_team_member_demo.xml",
         "demo/generic_security_restriction_demo.xml",
     ],
+    "assets": {
+        "web.report_assets_common": [
+            "airesa/static/src/scss/fonts.scss",
+            "airesa/static/src/scss/report_invoice.scss",
+        ],
+    },
+    "post_init_hook": "post_init_hook",
     "application": True,
 }

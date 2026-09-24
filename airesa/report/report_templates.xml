@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="external_layout" name="Airesa Invoice Layout">
+        <t t-if="not o" t-set="o" t-value="doc" />
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+
+        <div t-attf-class="header o_company_#{company.id}_layout airesa-invoice-header">
+            <div class="airesa-header-top">
+                <div class="airesa-header-logo-cell">
+                    <img
+                        t-if="company.logo"
+                        t-att-src="image_data_uri(company.logo)"
+                        class="airesa-header-logo"
+                        alt="Logo"
+                    />
+                </div>
+                <div class="airesa-header-document-cell">
+                    <div class="airesa-header-document-number">
+                        <t t-out="layout_document_title" />
+                    </div>
+                    <div t-if="o and o.invoice_date" class="airesa-header-document-date">
+                        <strong>Fecha de factura:</strong>
+                        <span t-field="o.invoice_date" t-options="{'widget': 'date'}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout airesa-invoice-page"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
+        >
+            <div class="airesa-main-content">
+                <div class="airesa-header-info-row">
+                    <div class="airesa-company-block">
+                        <div class="airesa-company-name">
+                            <span t-field="company.name" />
+                        </div>
+                        <div class="airesa-company-line">
+                            <span t-if="company.vat" t-field="company.vat" />
+                            <span t-if="company.street">, <span t-field="company.street" /></span>
+                            <span t-if="company.street2">, <span t-field="company.street2" /></span>
+                            <span t-if="company.state_id">
+                                , <t t-out="(company.city or '') + ', ' + company.state_id.name" />
+                            </span>
+                            <span t-if="company.zip">, C.P. <span t-field="company.zip" /></span>
+                        </div>
+                        <div class="airesa-company-line">
+                            <span t-if="company.phone">Teléfono: <span t-field="company.phone" /></span>
+                            <span t-if="company.email"> · Correo: <span t-field="company.email" /></span>
+                            <span t-if="company.website"> · <span t-field="company.website" /></span>
+                        </div>
+                        <div class="airesa-company-line" t-if="o and o.journal_id.name">
+                            <strong>Expedido en:</strong>
+                            <span t-field="o.journal_id.name" />
+                        </div>
+                    </div>
+                    <t t-call="web.address_layout" />
+                </div>
+                <t t-out="0" />
+            </div>
+        </div>
+
+        <div
+            t-attf-class="footer o_company_#{company.id}_layout airesa-report-footer {{report_type != 'pdf' and 'mt-auto'}}"
+        >
+            <div class="airesa-footer-line" />
+            <div class="airesa-footer-bottom">
+                <div t-if="report_type == 'pdf'" class="airesa-footer-pages">
+                    Página <span class="page" /> de <span class="topage" />
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_invoice_extra_sections" name="Airesa Invoice Extra Sections">
+        <t t-if="o.move_type == 'out_invoice'">
+            <t t-set="company_sudo" t-value="o.company_id.sudo()" />
+            <t t-set="invoice_policy_text" t-value="company_sudo.invoice_policy_text" />
+
+            <div
+                t-if="not is_html_empty(o.narration)"
+                class="airesa-observations-block avoid-page-break-inside"
+                name="airesa_observations"
+            >
+                <h5 name="airesa_observations_title">Observaciones / Notas de entrega</h5>
+                <div t-field="o.narration" />
+            </div>
+
+            <table t-if="company_sudo.print_promissory_note" class="airesa-pagare-row avoid-page-break-inside mt-4">
+                <tbody>
+                    <tr>
+                        <td class="airesa-pagare-col">
+                            <div class="promissory_note_block" name="promissory_note">
+                                <h5 name="promissory_note_title">Pagaré</h5>
+                                <div t-out="company_sudo._get_promissory_note_text(o)" />
+                            </div>
+                        </td>
+                        <td class="airesa-signature-col">
+                            <div class="signature_block" name="signature">
+                                <div class="signature_line" />
+                                <strong>Nombre y Firma de recibido y conformidad</strong>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div t-else="" class="signature_block avoid-page-break-inside mt-5" name="signature">
+                <div class="signature_line" />
+                <strong>Nombre y Firma de recibido y conformidad</strong>
+            </div>
+
+            <div
+                t-if="not is_html_empty(invoice_policy_text)"
+                class="invoice_policy_block avoid-page-break-inside mt-4"
+                name="invoice_policy"
+            >
+                <h5 name="invoice_policy_title">Políticas de devolución o garantía</h5>
+                <div t-out="invoice_policy_text" />
+            </div>
+        </t>
+    </template>
+
+    <template
+        id="document_tax_totals"
+        inherit_id="account.document_tax_totals_template"
+        primary="True"
+        name="Airesa Tax Totals (No Currency Symbol)"
+    >
+        <xpath expr="//span[@t-out=&quot;subtotal['base_amount_currency']&quot;]" position="attributes">
+            <attribute name="t-options">{'widget': 'float', 'precision': currency.decimal_places}</attribute>
+        </xpath>
+        <xpath expr="(//span[@t-out=&quot;tax_group['tax_amount_currency']&quot;])[1]" position="attributes">
+            <attribute name="t-options">{'widget': 'float', 'precision': currency.decimal_places}</attribute>
+        </xpath>
+        <xpath expr="(//span[@t-out=&quot;tax_group['tax_amount_currency']&quot;])[2]" position="attributes">
+            <attribute name="t-options">{'widget': 'float', 'precision': currency.decimal_places}</attribute>
+        </xpath>
+        <xpath expr="//span[@t-out=&quot;tax_group['display_base_amount_currency']&quot;]" position="attributes">
+            <attribute name="t-options">{'widget': 'float', 'precision': currency.decimal_places}</attribute>
+        </xpath>
+        <xpath
+            expr="//span[@t-out=&quot;tax_totals['cash_rounding_base_amount_currency']&quot;]"
+            position="attributes"
+        >
+            <attribute name="t-options">{'widget': 'float', 'precision': currency.decimal_places}</attribute>
+        </xpath>
+        <xpath expr="//strong[@t-out=&quot;tax_totals['total_amount_currency']&quot;]" position="attributes">
+            <attribute name="t-options">{'widget': 'float', 'precision': currency.decimal_places}</attribute>
+        </xpath>
+    </template>
+
+    <template
+        id="report_invoice_document"
+        inherit_id="account.report_invoice_document"
+        primary="True"
+        name="Airesa Invoice Document"
+    >
+        <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
+            <attribute name="t-call">airesa.external_layout</attribute>
+        </xpath>
+        <xpath expr="//div[@id='payment_term']" position="after">
+            <t t-call="airesa.report_invoice_extra_sections" />
+        </xpath>
+
+        <xpath expr="//t[@t-call='account.document_tax_totals']" position="attributes">
+            <attribute name="t-call">airesa.document_tax_totals</attribute>
+        </xpath>
+
+        <xpath expr="//p[@name='payment_communication']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <xpath expr="//p[@name='payment_communication']" position="after">
+            <p
+                class="airesa-amount-words"
+                name="airesa_amount_words"
+                t-if="o.move_type in ('out_invoice', 'out_refund')"
+            >
+                <strong>Importe total con letra:</strong><br />
+                <span t-field="o.amount_total_words" />
+            </p>
+        </xpath>
+
+        <xpath expr="//div[@name='comment']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+
+        <xpath expr="//table[@name='invoice_line_table']//th[@name='th_quantity']" position="before">
+            <th name="th_product_unspsc_code" class="text-end"><span>Código SAT</span></th>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']//td[@name='td_quantity']" position="before">
+            <td name="td_product_unspsc_code" class="text-end"><span t-out="line._get_product_unspsc_code()" /></td>
+        </xpath>
+        <xpath expr="//t/tr/t[@t-set='line_colspan']" position="attributes">
+            <attribute name="t-value" add="1" separator="+" />
+        </xpath>
+        <xpath expr="//t/t/t[@t-else='']/t[@t-set='line_colspan']" position="attributes">
+            <attribute name="t-value" add="1" separator="+" />
+        </xpath>
+
+        <xpath expr="//table[@name='invoice_line_table']//td[@name='account_invoice_line_name']" position="inside">
+            <div class="airesa-product-barcode" t-if="line.product_id.barcode">
+                <span t-field="line.product_id.barcode" />
+            </div>
+        </xpath>
+
+        <xpath
+            expr="//table[@name='invoice_line_table']//td[@name='td_subtotal']/span[@t-field='line.price_subtotal']"
+            position="attributes"
+        >
+            <attribute name="t-options">{'widget': 'float', 'precision': o.currency_id.decimal_places}</attribute>
+        </xpath>
+        <xpath
+            expr="//table[@name='invoice_line_table']//td[@name='td_subtotal']/span[@t-field='line.price_total']"
+            position="attributes"
+        >
+            <attribute name="t-options">{'widget': 'float', 'precision': o.currency_id.decimal_places}</attribute>
+        </xpath>
+
+        <xpath expr="//t[@t-set='display_discount']" position="attributes">
+            <attribute name="t-value">False</attribute>
+        </xpath>
+        <xpath expr="//t[@t-set='display_taxes']" position="attributes">
+            <attribute name="t-value">False</attribute>
+        </xpath>
+
+        <xpath expr="//div[@id='informations']//div[@name='invoice_date']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+
+    <template
+        id="report_invoice_document_l10n_mx_edi"
+        inherit_id="l10n_mx_edi.report_invoice_document"
+        primary="True"
+        name="Airesa Invoice Document (CFDI)"
+    >
+        <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
+            <attribute name="t-call">airesa.external_layout</attribute>
+        </xpath>
+        <xpath expr="//div[@id='complement']" position="after">
+            <t t-call="airesa.report_invoice_extra_sections" />
+        </xpath>
+
+        <xpath expr="//t[@t-call='account.document_tax_totals']" position="attributes">
+            <attribute name="t-call">airesa.document_tax_totals</attribute>
+        </xpath>
+
+        <xpath expr="//p[@name='payment_communication']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <xpath expr="//p[@name='payment_communication']" position="after">
+            <p
+                class="airesa-amount-words"
+                name="airesa_amount_words"
+                t-if="o.move_type in ('out_invoice', 'out_refund')"
+            >
+                <strong>Importe total con letra:</strong><br />
+                <span t-field="o.amount_total_words" />
+            </p>
+        </xpath>
+
+        <xpath expr="//div[@name='comment']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+
+        <xpath expr="//th[@name='th_product_unspsc_code']/span" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <xpath expr="//th[@name='th_product_unspsc_code']" position="inside">
+            <span>Código SAT</span>
+        </xpath>
+
+        <xpath expr="//table[@name='invoice_line_table']//td[@name='account_invoice_line_name']" position="inside">
+            <div class="airesa-product-barcode" t-if="line.product_id.barcode">
+                <span t-field="line.product_id.barcode" />
+            </div>
+        </xpath>
+
+        <xpath
+            expr="//table[@name='invoice_line_table']//td[@name='td_subtotal']/span[@t-field='line.price_subtotal']"
+            position="attributes"
+        >
+            <attribute name="t-options">{'widget': 'float', 'precision': o.currency_id.decimal_places}</attribute>
+        </xpath>
+        <xpath
+            expr="//table[@name='invoice_line_table']//td[@name='td_subtotal']/span[@t-field='line.price_total']"
+            position="attributes"
+        >
+            <attribute name="t-options">{'widget': 'float', 'precision': o.currency_id.decimal_places}</attribute>
+        </xpath>
+
+        <xpath expr="//t[@t-set='display_discount']" position="attributes">
+            <attribute name="t-value">False</attribute>
+        </xpath>
+        <xpath expr="//t[@t-set='display_taxes']" position="attributes">
+            <attribute name="t-value">False</attribute>
+        </xpath>
+
+        <xpath expr="//div[@id='informations']//div[@name='invoice_date']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+
+    <template id="report_invoice" name="Airesa Customer Invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.lang" />
+                <t t-set="print_with_payments" t-value="True" />
+                <t
+                    t-if="o._get_name_invoice_report() == 'l10n_mx_edi.report_invoice_document'"
+                    t-call="airesa.report_invoice_document_l10n_mx_edi"
+                    t-lang="lang"
+                />
+                <t t-else="" t-call="airesa.report_invoice_document" t-lang="lang" />
+            </t>
+        </t>
+    </template>
+</odoo>

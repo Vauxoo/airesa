@@ -1,0 +1,311 @@
+.airesa-invoice-header {
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+
+    .airesa-header-top {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .airesa-header-logo-cell {
+        float: left;
+        text-align: left;
+    }
+
+    .airesa-header-logo {
+        display: block;
+        width: auto;
+        max-width: 38mm;
+        max-height: 22mm;
+    }
+
+    .airesa-header-document-cell {
+        float: right;
+        text-align: right;
+    }
+
+    .airesa-header-document-number {
+        font-size: 19pt;
+        font-weight: 700;
+        line-height: 1.05;
+        white-space: nowrap;
+    }
+
+    .airesa-header-document-date {
+        margin-top: 2mm;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+}
+
+.airesa-invoice-page {
+    width: 100%;
+    margin: 0;
+
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    font-size: 10pt;
+    font-weight: 300;
+    line-height: 1.15;
+
+    color: #222;
+
+    table,
+    td,
+    th,
+    div,
+    span,
+    p,
+    address {
+        font-family: "Roboto Condensed", Arial, sans-serif;
+    }
+
+    .airesa-main-content {
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .airesa-header-info-row {
+        overflow: hidden;
+        margin-bottom: 4mm;
+        padding-bottom: 3mm;
+        border-bottom: 0.4mm solid #999;
+
+        .address.row {
+            float: right;
+            width: 48%;
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .airesa-company-block {
+        float: left;
+        width: 48%;
+        box-sizing: border-box;
+
+        font-size: 8.5pt;
+        line-height: 1.3;
+        color: #3d3c3c;
+    }
+
+    .airesa-company-name {
+        margin-bottom: 0.5mm;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #222;
+    }
+
+    .airesa-company-line {
+        margin-bottom: 0.3mm;
+    }
+
+    table[name="invoice_line_table"] {
+        width: 100%;
+        table-layout: fixed;
+        font-family: "Roboto Condensed", Arial, sans-serif;
+        font-size: 9pt;
+        border-collapse: collapse;
+
+        th[name="th_product_unspsc_code"] {
+            width: 11%;
+        }
+
+        th[name="th_quantity"] {
+            width: 11%;
+        }
+
+        th[name="th_priceunit"] {
+            width: 12%;
+        }
+
+        th[name="th_subtotal"] {
+            width: 12%;
+        }
+
+        thead th {
+            color: #3d3c3c;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+            padding: 1.5mm 1.5mm !important;
+            border-bottom: 0.4mm solid #999;
+        }
+
+        tbody td {
+            padding: 1.2mm 1.5mm !important;
+            border-bottom: 0.2mm solid #e1dede;
+            vertical-align: top;
+        }
+
+        tbody tr.o_line_section td {
+            background: #f5f5f5;
+            font-weight: 700;
+            border-bottom: 0.2mm solid #999;
+        }
+
+        th[name="th_product_unspsc_code"],
+        td[name="td_product_unspsc_code"] {
+            white-space: nowrap;
+        }
+
+        td[name="account_invoice_line_name"] > span {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .airesa-product-barcode {
+        margin-top: 0.3mm;
+        font-size: 7.5pt;
+        color: #666;
+    }
+
+    .o_total_table {
+        width: 100%;
+        max-width: 90mm;
+        margin: 2mm 0 0 auto !important;
+        font-family: "Roboto Condensed", Arial, sans-serif;
+        font-size: 9pt;
+
+        td {
+            padding: 0.8mm 0 !important;
+        }
+
+        tr.o_total td {
+            border-top: 0.4mm solid #999;
+            padding-top: 1.5mm !important;
+            font-size: 10.5pt;
+        }
+
+        tr.o_total strong {
+            font-weight: 700;
+        }
+    }
+
+    .airesa-amount-words {
+        font-size: 8.5pt;
+    }
+
+    .airesa-pagare-row {
+        width: 100% !important;
+        border-collapse: collapse;
+        table-layout: fixed;
+
+        &,
+        tr,
+        td {
+            border: 0 !important;
+        }
+    }
+
+    .airesa-pagare-col {
+        width: 70%;
+        padding-right: 4mm !important;
+        vertical-align: top;
+    }
+
+    .airesa-signature-col {
+        width: 30%;
+        vertical-align: bottom;
+
+        .signature_block {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    .airesa-observations-block {
+        font-size: 8.5pt;
+        line-height: 1.2;
+        padding: 2mm;
+        border: 1px solid #e1dede;
+
+        h5 {
+            font-size: 8pt;
+            font-weight: 700;
+            background: #e5e5e5;
+            padding: 1.1mm 2mm;
+            margin: -2mm -2mm 2mm -2mm;
+        }
+    }
+
+    .promissory_note_block {
+        border: 1px solid #e1dede;
+        padding: 2mm;
+        font-size: 7.8pt;
+        line-height: 1.2;
+        text-align: justify;
+
+        h5 {
+            font-size: 8pt;
+            font-weight: 700;
+            margin-bottom: 1mm;
+        }
+    }
+
+    .signature_block {
+        width: 70mm;
+        margin: 5mm 0 0 auto;
+        text-align: center;
+        font-size: 7.8pt;
+        font-weight: 700;
+
+        .signature_line {
+            border-top: 1px solid #000;
+            margin-bottom: 3mm;
+        }
+    }
+
+    .invoice_policy_block {
+        font-size: 7.8pt;
+        font-weight: 300;
+        line-height: 1.2;
+        text-align: justify;
+        padding: 2mm;
+        border: 1px solid #e1dede;
+
+        h5 {
+            font-size: 8pt;
+            font-weight: 700;
+            background: #e5e5e5;
+            padding: 1.1mm 2mm;
+            margin: -2mm -2mm 2mm -2mm;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+    }
+}
+
+.airesa-report-footer {
+    position: relative;
+    width: 100%;
+    height: 28mm;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    .airesa-footer-line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 7mm;
+        border-top: 0.4mm solid #999;
+    }
+
+    .airesa-footer-pages {
+        position: absolute;
+        right: 7mm;
+        bottom: 1.5mm;
+
+        font-family: "Roboto Condensed", Arial, sans-serif;
+        font-size: 10pt;
+        font-weight: 300;
+
+        color: #666;
+        text-align: right;
+        white-space: nowrap;
+    }
+}
