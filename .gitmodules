@@ -50,3 +50,7 @@
 	path = product-attribute
 	url = git@github.com:Vauxoo/product-attribute.git
 	branch = 19.0
+[submodule "sale-workflow"]
+	path = sale-workflow
+	url = git@github.com:Vauxoo/sale-workflow.git
+	branch = 19.0
